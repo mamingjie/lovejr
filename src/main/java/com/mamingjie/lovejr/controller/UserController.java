@@ -1,25 +1,14 @@
 package com.mamingjie.lovejr.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.mamingjie.lovejr.model.City;
-import com.mamingjie.lovejr.model.CityRepository;
-
-@RestController
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
-	@Autowired
-	CityRepository cityRepository;
-	
-	@RequestMapping("/add")
-	City add(City city) {
-		return cityRepository.save(city);
-	}
-	
-	@RequestMapping("/list")
-	Iterable<City> list() {
-		return cityRepository.findAll();
-	}
+    @RequestMapping("/login")
+    String login() {
+        return "login";
+    }
 }
