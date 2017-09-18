@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div sec:authorize="hasRole('USER')"><h2>hasRole: USER</h2></div>
+<h2><span sec:authentication="name"></span> <span sec:authentication="principal.authorities"></span> </h2>
+<form th:action="@{/user/logout}" method="post">
+    <input type="submit" value="Sign Out" />
+</form>
+</body>
+</html>

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
     <title>Login page</title>
-    <link th:href="@{/libs/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
-    <link th:href="@{/login.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/public/libs/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/public/login.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container">
-    <form class="form-signin">
+    <form class="form-signin" th:action="@{/user/login}" action="/user/login" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" />
+        <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" />
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" />
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required" />
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me" /> Remember me
@@ -22,8 +22,9 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
 </div>
-<script type="text/javascript" th:src="@{/libs/jquery/jquery-3.2.1.min.js}"></script>
-<script type="text/javascript" th:src="@{/libs/popper/popper.min.js}"></script>
-<script type="text/javascript" th:src="@{/libs/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/public/libs/jquery/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/public/libs/popper/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/public/libs/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/public/login.js}"></script>
 </body>
 </html>

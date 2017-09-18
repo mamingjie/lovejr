@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Error page</title>
+</head>
+<body>
+<h1><span th:text="${error}"></span></h1>
+<h1><span th:text="${timestamp}"></span></h1>
+<h1><span th:text="${status}"></span></h1>
+<h1><span th:text="${message}"></span></h1>
+<a href="index" th:href="@{/index}">Back to Home Page</a>
+</body>
+</html>

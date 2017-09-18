@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mamingjie.lovejr.service.BaseService;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 
 @Controller
 public class MainController {
@@ -22,8 +26,18 @@ public class MainController {
 	private StringRedisTemplate template;
 	
 	@RequestMapping("/")
-	String index() {
-		return "index";
+	void index(HttpServletResponse response) throws IOException {
+		response.sendRedirect("/index");
+	}
+
+	@RequestMapping("/index")
+	ModelAndView index() {
+		return new ModelAndView("index", "message", "message1");
+	}
+
+	@RequestMapping("/hello")
+	ModelAndView hello() {
+		return new ModelAndView("hello");
 	}
 
 	@RequestMapping("/redis")
