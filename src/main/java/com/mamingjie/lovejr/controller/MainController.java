@@ -1,6 +1,7 @@
 package com.mamingjie.lovejr.controller;
 
 import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.model.PutObjectResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mamingjie.lovejr.service.BaseService;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,9 +58,14 @@ public class MainController {
 
 	@RequestMapping("/oss")
 	String oss() {
-		// ossClient.
-		ossClient.putObject("lovejr-bucket", "vue.js", new File("/Users/mamingjie/vue.js"));
-		return null;
+		return "oss";
+	}
+
+	@RequestMapping("/upload")
+	@ResponseBody
+	String upload(MultipartFile file) throws IOException {
+		ossClient.putObject("lovejr-bucket", file.getOriginalFilename(), file.getInputStream());
+		return "http://lovejr-bucket.oss-cn-beijing.aliyuncs.com/" + file.getOriginalFilename();
 	}
 
 }
