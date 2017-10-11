@@ -10,6 +10,6 @@ public class BaseService {
 	String str;
 	
 	public String getStr() {
-		return str;
+		return String.format("%s", str);
 	}
 }
